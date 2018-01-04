@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/eustatos/typescript-nodejs-starter.svg?branch=master)](https://travis-ci.org/eustatos/typescript-nodejs-starter)
