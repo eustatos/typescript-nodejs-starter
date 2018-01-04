@@ -6,12 +6,17 @@
   "license": "MIT",
   "scripts": {
     "test": "nyc mocha -r ts-node/register src/**/*.spec.ts",
-    "release": "standard-version"
+    "release": "standard-version",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "build-ts": "tsc"
   },
   "devDependencies": {
+    "@types/chai": "^4.0.10",
     "@types/dotenv": "^4.0.2",
     "@types/express": "^4.11.0",
+    "@types/mocha": "^2.2.45",
     "@types/node": "^8.5.5",
+    "@types/supertest": "^2.0.4",
     "chai": "^4.1.2",
     "mocha": "^4.1.0",
     "nyc": "^11.4.1",
