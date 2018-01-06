@@ -1,27 +1,26 @@
-import {} from "mocha";
-import { expect, should } from "chai";
-import * as request from "supertest";
-import * as app from "./app";
+import * as mocha from "mocha";
+import * as chai from "chai";
+import chaiHttp = require("chai-http");
 
-describe("Create app", () => {
-    it("Should be create app", () => {
-        should().exist(app);
-    });
-    it("should be type of function", () => {
-        expect(app).to.be.a("function");
-    });
-});
+import App from "./app";
 
-describe("Init config from dotenv", () => {
-    it("should be determined EXPECT_DOTENV", () => {
-        expect(process.env.EXPECT_DOTENV).to.equal("success");
-    });
-});
+chai.use(chaiHttp);
+const expect = chai.expect;
 
-describe("GET /", () => {
-    it("status response should be 200", (done) => {
-        request(app)
-        .get("/")
-        .expect(200, done);
+describe("baseRoute", () => {
+
+  it("should be json", () => {
+    return chai.request(App).get("/")
+      .then(res => {
+        expect(res.type).to.eql("application/json");
+      });
+  });
+
+  it("should have a message prop", () => {
+    return chai.request(App).get("/")
+    .then(res => {
+      expect(res.body.message).to.eql("Hello World!");
     });
+  });
+
 });
